@@ -33,7 +33,7 @@ def cost(params, X, Y, U, U_params, embedding_type, circuit, cost_fn):
     return loss
 
 # Circuit training parameters
-steps = 1
+steps = 200
 learning_rate = 0.01
 batch_size = 25
 def circuit_training(X_train, Y_train, U, U_params, embedding_type, circuit, cost_fn):
