@@ -22,9 +22,7 @@ def cost(params, X, Y, U, U_params, embedding_type, circuit, cost_fn):
     global pr
     if circuit == 'QCNN':
         predictions = [QCNN_circuit.QCNN(x, params, U, U_params, embedding_type, cost_fn=cost_fn) for x in X]
-    elif circuit == 'Hierarchical':
-        predictions = [Hierarchical_circuit.Hierarchical_classifier(x, params, U, U_params, embedding_type, cost_fn=cost_fn) for x in X]
-
+        
     if cost_fn == 'mse':
         loss = square_loss(Y, predictions)
     elif cost_fn == 'cross_entropy':
