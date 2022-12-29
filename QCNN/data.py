@@ -1,5 +1,12 @@
 # Downloads & caches the data locally using tensorflow datasets or directly from emnist package
 # Pre-Processes the data that will be used in QCNN and Hierarchical Classifier Training
+# The data preprocessing includes :
+    # 1. Normalisation of data :: divide by 255 
+    # 2. Binary classification of labels
+    # 3. Feature reduction using : image resize 
+    # 3.a. Feature reduction using PCA: principal component analysis
+    # 3.b. Feature reduction using Autoencoder
+    # 4. Convert the resulting data into angles by multiplying with pi
 import numpy as np
 import tensorflow as tf
 import emnist;emnist.ensure_cached_data() 

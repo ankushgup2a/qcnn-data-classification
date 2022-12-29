@@ -133,7 +133,8 @@ def Encoding_to_Embedding(Encoding):
         Embedding = 'Angle-compact'
     return Embedding
 
-
+# Method to loop through ansatz and encodings in which they are to be run, each ansatz is run through provided
+# encodings.
 def Benchmarking(dataset, classes, Unitaries, U_num_params, Encodings, circuit, cost_fn, binary=True):
     I = len(Unitaries)
     J = len(Encodings)

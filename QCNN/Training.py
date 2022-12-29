@@ -3,7 +3,7 @@ import QCNN_circuit
 import pennylane as qml
 from pennylane import numpy as np
 import autograd.numpy as anp
-pr = True
+
 def square_loss(labels, predictions):
     loss = 0
     for l, p in zip(labels, predictions):
@@ -30,6 +30,8 @@ def cost(params, X, Y, U, U_params, embedding_type, circuit, cost_fn):
     return loss
 
 # Circuit training parameters
+# Every run batch is randomly created from the training batch of size #batch_size
+# after every 20 ietrations we print the updated cost to infer its gradient
 steps = 200
 learning_rate = 0.01
 batch_size = 25
@@ -39,8 +41,6 @@ def circuit_training(X_train, Y_train, U, U_params, embedding_type, circuit, cos
             total_params = U_params * 3
         else:
             total_params = U_params * 3 + 2 * 3
-    elif circuit == 'Hierarchical':
-        total_params = U_params * 7
 
     params = np.random.randn(total_params, requires_grad=True)
     opt = qml.NesterovMomentumOptimizer(stepsize=learning_rate)
@@ -53,7 +53,7 @@ def circuit_training(X_train, Y_train, U, U_params, embedding_type, circuit, cos
         params, cost_new = opt.step_and_cost(lambda v: cost(v, X_batch, Y_batch, U, U_params, embedding_type, circuit, cost_fn),
                                                      params)
         loss_history.append(cost_new)
-        if it % 10 == 0:
+        if it % 20 == 0:
             print("iteration: ", it, " cost: ", cost_new)
 
     return loss_history, params
