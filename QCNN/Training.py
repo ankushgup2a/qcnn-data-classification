@@ -1,6 +1,5 @@
 # Implementation of Quantum circuit training procedure
 import QCNN_circuit
-import Hierarchical_circuit
 import pennylane as qml
 from pennylane import numpy as np
 import autograd.numpy as anp

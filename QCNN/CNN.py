@@ -91,7 +91,7 @@ def Benchmarking_CNN(dataset, classes, Encodings, Encodings_size, binary, optimi
     f.close()
 
 steps = 200
-dataset = 'fashion_mnist'
+dataset = 'mnist-e'
 classes = [0,1]
 binary = False
 Encodings = ['pca8', 'autoencoder8', 'pca16-compact', 'autoencoder16-compact']

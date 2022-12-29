@@ -17,7 +17,7 @@ pca12 = ['pca12-1', 'pca12-2', 'pca12-3', 'pca12-4']
 autoencoder12 = ['autoencoder12-1', 'autoencoder12-2', 'autoencoder12-3', 'autoencoder12-4']
 
 def data_load_and_process(dataset, classes=[0, 1], feature_reduction='resize256', binary=True):
-    if dataset == 'e-mnist':
+    if dataset == 'emnist':
         (x_train, y_train) = extract_training_samples('mnist') 
         (x_test, y_test) = extract_test_samples('mnist')
     elif dataset == 'letters':

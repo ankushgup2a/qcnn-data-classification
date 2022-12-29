@@ -1,7 +1,6 @@
 import data
 import Training
 import QCNN_circuit
-import Hierarchical_circuit
 import numpy as np
 
 def accuracy_test(predictions, labels, cost_fn, binary = True):
@@ -156,8 +155,6 @@ def Benchmarking(dataset, classes, Unitaries, U_num_params, Encodings, circuit, 
 
             if circuit == 'QCNN':
                 predictions = [QCNN_circuit.QCNN(x, trained_params, U, U_params, Embedding, cost_fn) for x in X_test]
-            elif circuit == 'Hierarchical':
-                predictions = [Hierarchical_circuit.Hierarchical_classifier(x, trained_params, U, U_params, Embedding, cost_fn) for x in X_test]
 
             accuracy = accuracy_test(predictions, Y_test, cost_fn, binary)
             print("Accuracy for " + U + " " + Encoding + " :" + str(accuracy))
