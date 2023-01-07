@@ -1,3 +1,7 @@
+# This is the start file for the project: open it in Spyder and run it or use 
+# python ./qcnn-data-classification/QCNN/result.py   ## command on console to trigger this
+# It consists of initial parameters, prerequisite libraries for running the system
+# 
 # This generates the results of the bechmarking code
 
 import Benchmarking

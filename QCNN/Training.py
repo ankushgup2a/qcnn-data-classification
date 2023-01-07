@@ -36,6 +36,34 @@ steps = 200
 learning_rate = 0.01
 batch_size = 25
 def circuit_training(X_train, Y_train, U, U_params, embedding_type, circuit, cost_fn):
+    """
+    
+
+    Parameters
+    ----------
+    X_train : TYPE array
+        DESCRIPTION training set
+    Y_train : TYPE array
+        DESCRIPTION label set
+    U : TYPE string
+        DESCRIPTION ansatz on which convolutional layer will be created 
+    U_params : TYPE integer
+        DESCRIPTION number of parameters for the ansatz
+    embedding_type : TYPE string
+        DESCRIPTION embedding to be used for dataset
+    circuit : TYPE string
+        DESCRIPTION QCNN circuit to be created
+    cost_fn : TYPE string
+        DESCRIPTION mse or cross_entropy
+
+    Returns
+    -------
+    loss_history : TYPE integer array 
+        DESCRIPTION cost seen after every iteration is returned 
+    params : TYPE array
+        DESCRIPTION  parameters updated by step optimizer
+
+    """
     if circuit == 'QCNN':
         if U == 'U_SU4_no_pooling' or U == 'U_SU4_1D' or U == 'U_9_1D':
             total_params = U_params * 3

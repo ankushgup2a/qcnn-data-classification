@@ -2,7 +2,11 @@ import data
 import Training
 import QCNN_circuit
 import numpy as np
-
+# This file has functional code to call
+#1. Get training and test sets based on encoding parameter from the data module
+#2. training of ansatz by calling the training module
+#3. Later it runs the trained module on test data and prints the accuracy of the trained system
+#
 def accuracy_test(predictions, labels, cost_fn, binary = True):
     if cost_fn == 'mse':
         if binary == True:
@@ -136,6 +140,34 @@ def Encoding_to_Embedding(Encoding):
 # Method to loop through ansatz and encodings in which they are to be run, each ansatz is run through provided
 # encodings.
 def Benchmarking(dataset, classes, Unitaries, U_num_params, Encodings, circuit, cost_fn, binary=True):
+    """
+    
+
+    Parameters
+    ----------
+    dataset : TYPE string
+        DESCRIPTION key to switch dataset to be trained for.
+    classes : TYPE integer array
+        DESCRIPTION  literals which are to be selected from dataset
+    Unitaries : TYPE string array 
+        DESCRIPTION name of ansatz in array for which programme is running
+    U_num_params : TYPE integer array
+        DESCRIPTION number of ansatz with respect to each ansatz provided in above array
+    Encodings : TYPE string array 
+        DESCRIPTION encoding for which each ansatz is to be run 
+    circuit : TYPE string
+        DESCRIPTION QCNN by default
+    cost_fn : TYPE string
+        DESCRIPTION mse or cross_entropy
+    binary : TYPE boolean, optional telling whether training is binary or multi, currently it is binary
+        DESCRIPTION. The default is True. True for mse and false for cross_entropy
+
+    Returns
+    -------
+    None. It writes all the results in results.txt file under Result folder with code
+
+    """
+
     I = len(Unitaries)
     J = len(Encodings)
 

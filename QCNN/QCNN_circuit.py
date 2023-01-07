@@ -117,7 +117,7 @@ def QCNN_1D_circuit(U, params, U_params):
     U(param3, wires=[3,4])
 
 
-
+# By default qml.device uses back propagation, it can be used to ensure
 dev = qml.device('lightning.qubit', wires = 8)
 @qml.qnode(dev)
 def QCNN(X, params, U, U_params, embedding_type='Angle', cost_fn='mse'):
